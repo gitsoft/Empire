@@ -86,7 +86,7 @@ fi
 if uname | grep -q "Darwin"; then
     Xar_version="xar-1.5.2"
 	install_powershell
-	sudo pip install -r requirements.txt --global-option=build_ext \
+	sudo python -m pip install -r requirements.txt --global-option=build_ext \
 		--global-option="-L/usr/local/opt/openssl/lib" \
 		--global-option="-I/usr/local/opt/openssl/include"
 	# In order to build dependencies these should be exproted.
@@ -99,13 +99,13 @@ else
 		Release=Fedora
         Xar_version="xar-1.5.2"
 		sudo dnf install -y make automake gcc gcc-c++  python-devel m2crypto python-m2ext swig libxml2-devel java-openjdk-headless openssl-devel openssl libffi-devel redhat-rpm-config
-		sudo pip install -r requirements.txt
+		sudo python -m pip install -r requirements.txt
 	elif lsb_release -d | grep -q "Kali"; then
 		Release=Kali
         Xar_version="xar-1.6.1"
 		apt-get update
 		sudo apt-get install -y make g++ python-dev python-m2crypto swig python-pip libxml2-dev default-jdk zlib1g-dev libssl1.1 build-essential libssl-dev libxml2-dev zlib1g-dev
-		sudo pip install -r requirements.txt
+		sudo python -m pip install -r requirements.txt
 		install_powershell
 	elif lsb_release -d | grep -q "Ubuntu"; then
 		Release=Ubuntu
@@ -120,7 +120,7 @@ else
             Xar_version="xar-1.5.2"
         fi
 		sudo apt-get install -y make g++ python-dev python-m2crypto swig python-pip libxml2-dev default-jdk $LibSSL_pkgs build-essential
-		sudo pip install -r $Pip_file
+		sudo python -m pip install -r $Pip_file
 		install_powershell
 	else
 		echo "Unknown distro - Debian/Ubuntu Fallback"
@@ -135,7 +135,7 @@ else
             Xar_version="xar-1.5.2"
         fi
 		sudo apt-get install -y make g++ python-dev python-m2crypto swig python-pip libxml2-dev default-jdk libffi-dev $LibSSL_pkgs build-essential
-		sudo pip install -r $Pip_file
+		sudo python -m pip install -r $Pip_file
 		install_powershell
 	fi
 fi
