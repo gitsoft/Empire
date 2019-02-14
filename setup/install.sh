@@ -122,7 +122,7 @@ fi
 
 if uname | grep -q "Darwin"; then
 	install_powershell
-	sudo pip install -r requirements.txt --global-option=build_ext \
+	sudo python -m pip install -r requirements.txt --global-option=build_ext \
 		--global-option="-L/usr/local/opt/openssl/lib" \
 		--global-option="-I/usr/local/opt/openssl/include"
 	# In order to build dependencies these should be exproted. 
